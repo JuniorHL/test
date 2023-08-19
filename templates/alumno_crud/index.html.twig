@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumno index{% endblock %}
+
+{% block body %}
+    <h1>Alumno index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Puntaje</th>
+                <th>Fecha</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.id }}</td>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.edad }}</td>
+                <td>{{ alumno.puntaje }}</td>
+                <td>{{ alumno.fecha ? alumno.fecha|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_alumno_crud_show', {'id': alumno.id}) }}">show</a>
+                    <a href="{{ path('app_alumno_crud_edit', {'id': alumno.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center">hola</div>
+
+    
+
+    <a href="{{ path('app_alumno_crud_new') }}">Create new</a>
+{% endblock %}

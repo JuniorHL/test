@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumno{% endblock %}
+
+{% block body %}
+    <h1>Alumno</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ alumno.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ alumno.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>{{ alumno.edad }}</td>
+            </tr>
+            <tr>
+                <th>Puntaje</th>
+                <td>{{ alumno.puntaje }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ alumno.fecha ? alumno.fecha|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_alumno_crud_index') }}">back to list</a>
+
+    <a href="{{ path('app_alumno_crud_edit', {'id': alumno.id}) }}">edit</a>
+
+    {{ include('alumno_crud/_delete_form.html.twig') }}
+{% endblock %}
